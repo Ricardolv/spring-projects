@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT  $JAVA_OPTS -jar target/htmx*.jar
+web: java -Dfile.encoding=UTF-8 -Dserver.port=$PORT  $JAVA_OPTS -jar target/htmx*.jar
