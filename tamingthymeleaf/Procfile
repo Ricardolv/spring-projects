@@ -1,0 +1,1 @@
+web: java -Dfile.encoding=UTF-8 -Dserver.port=$PORT -Dspring.profiles.active=prod  $JAVA_OPTS -jar target/taming*.jar
