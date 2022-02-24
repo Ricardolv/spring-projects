@@ -1,0 +1,29 @@
+### STS ###
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+#### Mac ###
+.DS_Store
+
+### Maven ###
+log/
+target/
+
+Servers/*
+.metadata
+bin/
+src/main/resource/rebel.xml
+rebel.xml
+.mvn*
+mvnw*
+src/main/webapp/
+src/test/
