@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}"
+	xmlns:brewer="http://brewer.project.com"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+	
+<head>
+	<title>Pesquisa de Vendas</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Pesquisa de Vendas</h1>
+				</div>
+				
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/sales/new}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Nova venda</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="GET" th:object="${saleFilter}" th:action="@{/sales}">
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label" for="code">Código</label>
+					<input type="text" class="form-control" id="code" autofocus="autofocus" th:field="*{code}"/>
+				</div>
+				
+				<div class="form-group  col-sm-6">
+					<label for="status" class="control-label">Status</label>
+					<select id="status" class="form-control" th:field="*{status}">
+	                    <option value="">Todos os status</option>
+	                    <option th:each="status : ${statusAll}" th:value="${status}" th:text="${status.description}"></option>
+	                </select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label for="creationDateInitial">Data de criação</label>
+					<div class="form-inline">
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-date" id="creationDateInitial" 
+							th:field="*{since}" autocomplete="off"/>
+						<label for="creationDateFinal" class="aw-form-label-between">até</label>
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-date" id="creationDateFinal" 
+							th:field="*{upUntil}" autocomplete="off"/>
+					</div>
+				</div>
+				
+				<div class="form-group  col-sm-6">
+					<label for="minimumValue">Valor total</label>
+					<div class="form-inline">
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-decimal" id="minimumValue" th:field="*{minimumValue}"/>
+						<label for="maximumValue" class="aw-form-label-between">até</label>
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-decimal" id="maximumValue" th:field="*{maximumValue}"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label" for="clientName">Nome cliente</label>
+					<input type="text" class="form-control" id="clientName" th:field="*{clientName}"/>
+				</div>
+			
+				<div class="form-group  col-sm-6">
+					<label for="clientCpfCnpj" class="control-label">CPF/CNPJ</label>
+					<input type="text" class="form-control" id="clientCpfCnpj" th:field="*{clientCpfCnpj}"/>
+				</div>
+				
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Pesquisar</button>
+		</form>
+		
+		<div class="table-responsive  bw-table-simple">
+			<table class="table  table-hover">
+	            <thead>
+	            	<tr>
+	                	<th>Código</th>
+	                	<th>
+	                		<brewer:order page="${page}" field="c.name" text="Client"/>
+	                	</th>
+	                	<th>Data de criação</th>
+	                	<th>Valor total</th>
+	                	<th>Vendedor</th>
+	                	<th>Status</th>
+	                 	<th class="table-col-actions"></th>
+					</tr>
+				</thead>
+				
+	            <tbody>
+					<tr th:each="sale : ${page.content}">
+						<td th:text="${sale.code}"></td>
+						<td th:text="${sale.client.name}"></td>
+						<td th:text="${{sale.creationDate}}"></td>
+						<td th:text="|R$ ${{sale.totalValue}}|"></td>
+						<td th:text="${sale.user.name}"></td>
+						<td th:text="${sale.status.description}"></td>
+	                 	<td class="text-center">
+		   					<a class="btn  btn-link  btn-xs  js-tooltip" title="Editar" 
+		   					   th:href="@{/sales/{code}(code=${sale.code})}">
+		   						<i class="glyphicon glyphicon-pencil"></i>
+		   					</a>
+	                 	</td>
+	                </tr>
+	                
+	                <tr th:if="${page.empty}">
+	                	<td colspan="7">Nenhuma venda encontrada</td>
+	                </tr>
+	             </tbody>
+	         </table>
+		</div>
+		
+		<brewer:pagination page="${page}"/>
+	</div>
+</section>
+
+</body>
+</html>

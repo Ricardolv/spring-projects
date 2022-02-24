@@ -1,0 +1,2 @@
+ALTER TABLE tb_user
+	MODIFY active BOOLEAN DEFAULT true NOT NULL;

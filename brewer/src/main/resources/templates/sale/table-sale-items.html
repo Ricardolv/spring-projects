@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+
+	<div class="bw-table-item js-table-item" th:each="item : ${items}" data:total-value="${totalValue}">
+		<div class="bw-table-item__column  bw-table-item__column--photo">
+			<img th:src="@{/photos/thumbnail.{photo}(photo=${item.beer.photoOrMock})}" class="img-responsive"/>
+		</div>
+		
+		<div class="bw-table-item__column  bw-table-item__column--details">
+			<span class="bw-table-beer-name" th:text="${item.beer.name}">Negra Modelo Long Neck 355ml</span>
+			<span class="label  label-default" th:text="${item.beer.sku}">AA1112</span>
+			<span class="bw-table-beer-origin" th:text="${item.beer.origin.description}">Importada</span>
+		</div>
+		
+		<div class="bw-table-item__column  bw-table-item__column--values">
+			<div class="bw-table-beer-value-little">
+				<input type="text" maxlength="3" 
+				class="bw-table-beer-field-quantity js-table-beer-quantity-item" 
+				th:value="${item.quantity}" data:code-beer="${item.beer.code}"
+				th:disabled="${sale != null ? sale.notSaveAllowed : false}"/>
+				<span>x R$[[${{item.unitaryValue}}]]</span>
+			</div>
+			<div class="bw-table-beer-value-big">R$[[${{item.totalValue}}]]</div>
+		</div>
+		
+		<div class="bw-table-item__painel-exclusion" th:if="${sale != null ? sale.saveAllowed : false}">
+		
+			<span class="bw-table-item__title-exclusion"> Excluir este item da venda? </span>
+			<button type="button" class="btn btn-danger  js-exclusion-item-btn" 
+					data:code-beer="${item.beer.code}">Sim, excluir!</button>
+		</div>
+		
+	</div>
+	
+	<div class="bw-table-beers__empty" th:if="${items.empty}">
+		<i class="glyphicon  glyphicon-shopping-cart"></i> 
+		<span>Você ainda não adicionou nenhuma cerveja.</span>
+	</div>
+						
+</html>	

@@ -1,0 +1,32 @@
+﻿
+spring:
+  cloud:
+    azure:
+      eventhub:
+        connection-string: Endpoint=sb://radix-event-hub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=2U9Cjyvr70qc9WDAWk/eIJRFYlHfrQcIOwEMzHyFAX8=
+        checkpoint-storage-account: storageradix
+        checkpoint-access-key: JGifn5PR+j3KPhs7zGMtz6XhhGW/RrZUN2dabOxM/vJxM5F9qu+AyJ+pBNWsvDWK48bnMTStNb0+p6hBUYEDrQ==
+
+        #connection-string: [ eventhub-namespace-connection-string ]
+        #checkpoint-storage-account: storageradix
+        #checkpoint-access-key: [ checkpoint-access-key ]
+        #checkpoint-container: wingtiptoyscontainer
+
+    stream:
+      bindings:
+        consume-in-0:
+          destination: radix-event-hub
+          group: $Default
+        supply-out-0:
+          destination: radix-event-hub
+
+      eventhub:
+        bindings:
+          consume-in-0:
+            consumer:
+              checkpoint-mode: MANUAL
+      function:
+        definition: consume;supply;
+      poller:
+        initial-delay: 0
+        fixed-delay: 1000

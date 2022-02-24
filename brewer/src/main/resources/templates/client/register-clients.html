@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:data="http://www.thymeleaf.org/extras/data"
+	  layout:decorate="~{layout/layout}"
+	  xmlns:brewer="http://brewer.project.com" >
+	<head> 
+		<title>Cadastro de cliente</title>
+	</head>
+	<body>
+		<section layout:fragment="content">
+		
+			<div class="page-header">
+				<div class="container-fluid">
+					
+					<div class="row">
+						<div class="col-xs-10">
+							<h1>Cadastro de Cliente</h1>
+						</div>
+						
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn  btn-default" th:href="@{/clients}">
+									<i class="glyphicon  glyphicon-plus-sign "></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="container-fluid">
+			
+				<form method="POST" th:object="${client}" 
+					  th:action="${client.new} ? @{/clients/new} : @{/clients/{code}(code=${client.code})}">
+					
+					<brewer:message/>
+					<input type="hidden" th:field="*{code}" />
+						
+					<div class="form-group  bw-required" brewer:classforerror="name">
+						<label for="name" class="control-label">Nome</label>
+						<input id="name" type="text" class="form-control" th:field="*{name}"/>
+					</div>
+					
+					<div class="row">
+						<div class="form-group  col-sm-6  bw-required" brewer:classforerror="personType" >
+							<label for="personType" class="control-label">Tipo Pessoa</label>
+							<div>
+								<th:block th:each="personType : ${personTypes}">
+									<div class="radio  radio-inline">
+										<input type="radio" th:id="|id_${personType}|" class="js-radio-personType" 
+											th:field="*{personType}" th:value="${personType}" 
+											data:document="${personType.document}" data:inputmask="${personType.mask}"  > 
+										<label class="control-label" th:for="|id_${personType}|" 
+											th:text="${personType.description}"></label>
+									</div>
+								</th:block>
+							</div>
+						</div>
+						<div class="form-group  col-sm-6 bw-required" brewer:classforerror="cpfCnpj">
+							<label for="cpfCnpj" class="control-label">CPF/CNPJ</label>
+							<input id="cpfCnpj" type="text" class="form-control" th:field="*{cpfCnpj}" disabled/>
+						</div>
+					</div>	
+					
+					<div class="row">
+						<div class="form-group  col-sm-6">
+							<label for="phone">Telefone</label>
+							<input id="phone" type="text" class="form-control js-phone-number" th:field="*{phone}"/>
+						</div>
+						<div class="form-group  col-sm-6" brewer:classforerror="email">
+							<label for="email" class="control-label">E-mail</label>
+							<input id="email" type="text" class="form-control" th:field="*{email}"/>
+						</div>
+					</div>	
+					
+					<div class="row">
+						<div class="form-group  col-sm-4">
+							<label for="public-place">Logradoouro</label>
+							<input id="public-place" type="text" class="form-control" th:field="*{anddress.street}" />
+						</div>
+						<div class="form-group  col-sm-4">
+							<label for="number">Número</label>
+							<input id="number" type="text" class="form-control" th:field="*{anddress.number}" />
+						</div>
+						<div class="form-group  col-sm-4">
+							<label for="complement">Complemento</label>
+							<input id="complement" type="text" class="form-control" th:field="*{anddress.complement}" />
+						</div>
+					</div>	
+					
+					<div class="row">
+						<div class="form-group  col-sm-4">
+							<label for="zipCode">CEP</label>
+							<input id="zipCode" type="text" class="form-control  js-zipCode" th:field="*{anddress.zipCode}" />
+						</div>
+						
+						
+						<div class="form-group  col-sm-4">
+							<label for="state" class="control-label">Estado</label>
+							<div class="bw-field-action">
+								<select id="state" class="form-control" th:field="*{anddress.state}">
+									<option value="">Selecione o estado</option>
+									<option th:each="state : ${states}" th:value="${state.code}" th:text="${state.name}"></option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group  col-sm-4">
+							<label for="city">Cidade</label>
+							<div class="bw-field-action">
+								
+								<input type="hidden" id="codeCitySelected" th:value="*{anddress.city} != null ? *{anddress.city.code}" />
+								<select id="city" class="form-control" data:url="@{/citys}" th:field="*{anddress.city}" > 
+								</select>
+								<div class="bw-field-action__icon js_img-loading" style="display: none">
+									<img th:src="@{/images/mini-loading.gif}">
+								</div>
+								
+							</div>
+						</div>
+					</div>	
+					
+					
+					<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+			
+				</form>
+			</div>
+			
+		</section>	
+		
+		<th:block layout:fragment="javascript-extra">
+			<script th:src="@{/javascripts/client.mask-cpf-cnpj.js}"></script>
+			<script th:src="@{/javascripts/client.combo-state-city.js}"></script>
+		</th:block>	
+	</body>
+</html>

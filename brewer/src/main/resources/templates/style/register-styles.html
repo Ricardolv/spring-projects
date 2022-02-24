@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}"
+	  xmlns:brewer="http://brewer.project.com">
+	<head> 
+		<title>Cadastro de Estilo</title>
+	</head>
+	<body>
+		<section layout:fragment="content">
+		
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1>Cadastro de Estilo</h1>
+						</div>
+						
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn  btn-default" th:href="@{/styles}">
+									<i class="glyphicon  glyphicon-plus-sign "></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="container-fluid">
+			
+				<form method="POST" th:object="${style}" class="form-vertical  js-form-loading"
+					  th:action="${style.new} ? @{/styles/new} : @{/styles/{code}(code=${style.code})}" >
+					
+					<brewer:message/>
+					<input type="hidden" th:field="*{code}" />
+					
+					<div class="form-group bw-required" brewer:classforerror="name">
+						<label for="name" class="control-label" >Nome</label>
+						<input id="name" type="text" class="form-control" th:field="*{name}"/>
+					</div>
+						
+					
+					<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+			
+				</form>
+			</div>
+			
+		</section>	
+	</body>
+</html>

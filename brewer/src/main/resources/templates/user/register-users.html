@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}"
+	  xmlns:brewer="http://brewer.project.com">
+	<head> 
+		<title>Cadastro de usuário</title>
+		
+		<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}"/>
+		
+	</head>
+	<body>
+		<section layout:fragment="content">
+		
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1 th:if="${user.new}">Cadastro de Usuário</h1>
+							<h1 th:unless="${user.new}">Edição de usuário - [[${user.name}]]</h1>
+						</div>
+						
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn  btn-default" th:href="@{/users}">
+									<i class="glyphicon  glyphicon-plus-sign "></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="container-fluid">
+			
+				<form method="POST"  th:object="${user}" class="form-vertical  js-form-loading"
+					  th:action="${user.new} ? @{/users/new} : @{/users/{code}(code=${user.code})}">
+					  
+					<brewer:message/>
+					
+					<input type="hidden" th:field="*{code}" />
+						
+					<div class="form-group bw-required" brewer:classforerror="name">
+						<label for="name" class="control-label">Nome</label>
+						<input id="name" type="text" class="form-control" th:field="*{name}"/>
+					</div>
+					
+					<div class="row">
+						<div class="form-group  col-sm-8 bw-required" brewer:classforerror="email">
+							<label for="email" class="control-label">E-mail</label>
+							<input id="email" type="text" class="form-control" th:field="*{email}"/>
+						</div>
+						<div class="form-group  col-sm-2">
+							<label for="birthDate">Data Nascimento</label>
+							<input id="birthDate" type="text" class="form-control  js-date" th:field="*{birthDate}" autocomplete="off"/>
+						</div>
+						
+						<div class="form-group  col-sm-2"></div>
+					</div>	
+					
+					<div class="row">
+						<div class="form-group  col-sm-4" brewer:classforerror="password" th:classappend="${user.new} ? bw-required">
+							<label for="password" class="control-label">Senha</label>
+							<input id="password" type="password" class="form-control" th:field="*{password}"  />
+						</div>
+						<div class="form-group  col-sm-4" brewer:classforerror="passwordConfirm">
+							<label for="passwordConfirm" class="control-label">Confirmar Senha</label>
+							<input id="passwordConfirm" type="password" class="form-control" th:field="*{passwordConfirm}" />
+						</div>
+						
+						<div class="form-group  col-sm-4" th:if="${#authentication.principal.user.code != user.code}">
+							<label for="active">Status</label>
+							<div>
+								<input type="checkbox" class="js-status" 
+									   data-size="small" data-off-color="danger" 
+									   data-on-text="Ativo" data-off-text="Inativo" th:field="*{active}"/>
+							</div>
+						</div>
+					</div>	
+					
+					<div class="row">
+						<div class="form-group  col-sm-6  " brewer:classforerror="groups">
+							<label class="control-label">Grupos</label> 
+							<div>
+								<th:block th:each="group : ${groups}">
+			  						<div class="checkbox  checkbox-inline"> 
+				    					<input type="checkbox" th:value="${group.code}" th:field="*{groups}" />
+				    					<label th:for="${#ids.prev('groups')}" th:text="${group.name}"></label>
+			    					</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+			
+				</form>
+			</div>
+			
+		</section>	
+		
+		<th:block layout:fragment="javascript-extra">
+			<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+			<script>
+				$('.js-status').bootstrapSwitch();
+			</script>
+		</th:block>
+		
+	</body>
+</html>

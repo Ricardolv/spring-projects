@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	layout:decorate="~{layout/layout}"
+	xmlns:brewer="http://brewer.project.com">
+
+	<head>
+		<title th:text="#{sale.title.register}"></title>
+		
+		<link rel="stylesheet" th:href="@{/stylesheets/vendors/easy-autocomplete.min.css}" />
+		<link rel="stylesheet" th:href="@{/stylesheets/vendors/easy-autocomplete.themes.min.css}" />
+	</head>
+	
+	<section layout:fragment="content">
+	
+		<div class="page-header">
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-xs-10">
+						<h1 th:if="${sale.new}" th:text="#{sale.title.register}"></h1>
+						<h1 th:unless="${sale.new}" th:text="#{sale.title.edit(${sale.code})}">Edição da venda - nº [[]]</h1>
+					</div>
+				
+					<div class="col-xs-2">
+						<div class="aw-page-header-controls">
+							<a class="btn  btn-default" th:href="@{/sales}">
+								<i class="glyphicon  glyphicon-plus-sign "></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+							</a>
+						</div>
+						
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<form method="POST" th:action="@{/sales/new}" th:object="${sale}" class="js-form-principal">
+				<brewer:message/>
+
+				<input type="hidden" id="uuid" th:field="*{uuid}" />
+				<input type="hidden" th:field="*{code}" />
+				<input type="hidden" th:field="*{user}" />
+				
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="aw-box js-total-value-box-container">
+							<div class="aw-box__icon">
+								<i class="fa  fa-usd  fa-3x"></i>
+							</div>
+							<div class="aw-box__value">R$<span class="js-total-value-box" th:text="${{sale.totalValue}}">0,00</span></div>
+							<div class="aw-box__title">Total</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-4">
+						<div class="aw-box">
+							<div class="aw-box__icon">
+								<i class="fa  fa-tag  fa-3x"></i>
+							</div>
+							<div class="aw-box__value" th:text="*{status.description}"></div>
+							<div class="aw-box__title">Status</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-4">
+						<div class="aw-box">
+							<div class="aw-box__icon">
+								<i class="fa  fa-calendar  fa-3x"></i>
+							</div>
+							<div class="aw-box__value">
+								<span class="js-tooltip" th:if="${sale.daysCreative == 0}">Hoje</span>
+								<span class="js-tooltip" th:if="${sale.daysCreative == 1}">Há um dia</span>
+								<span class="js-tooltip" th:if="${sale.daysCreative > 1}">Há [[${sale.daysCreative}]] dias</span>
+							</div>
+							<div class="aw-box__title">Criação</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="form-group  col-sm-4   bw-required" brewer:classforerror="client.code">
+						<label class="control-label" for="nameClient">Cliente</label>
+						<div class="input-group">
+					      <input id="nameClient" type="text" readonly="readonly" class="form-control"  th:field="*{client.name}" 
+					      		 placeholder="Clique na lupa para pesquisar o cliente"/>
+					      <input id="codeClient" type="hidden" th:field="*{client}"/>
+					      <span class="input-group-btn">
+					        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
+					        		data-toggle="modal" data-target="#searchSpeedClients" th:disabled="${sale.notSaveAllowed}">
+					        	
+					        	<i class="glyphicon  glyphicon-search"></i>
+					        </button>
+					      </span>
+					    </div>
+					</div>
+					
+					<div class="form-group  col-sm-4">
+						<label class="control-label" for="freightValue">valor do frete</label>
+						<div class="input-group">
+		      				<div class="input-group-addon">R$</div> 
+							<input type="text" maxlength="14" class="form-control  js-decimal" 
+								   id="freightValue" th:field="*{freightValue}" data:value="${freightValue}"
+								   th:disabled="${sale.notSaveAllowed}"/>
+						</div>
+					</div>
+					
+					<div class="form-group  col-sm-4">
+						<label class="control-label" for="discountValue">valor do desconto</label>
+						<div class="input-group">
+		      				<div class="input-group-addon">R$</div> 
+							<input type="text" maxlength="14" class="form-control  js-decimal" 
+								   id="discountValue" th:field="*{discountValue}" data:value="${discountValue}"
+								   th:disabled="${sale.notSaveAllowed}"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group  col-lg-12">
+						<ul class="nav nav-tabs  js-flaps-sale">
+						  <li role="presentation" class="active"><a href="#beers">Cervejas</a></li>
+						  <li role="presentation"><a href="#delivery">Entrega</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="tab-content">
+					<div class="tab-pane active" id="beers">  
+	
+						<div class="row">
+							<div class="form-group  col-lg-12">
+								<input type="text" class="form-control  js-sku-name-beers-input" id="beer" 
+									placeholder="Pesquise e adicione a cerveja pelo SKU ou nome" autofocus="autofocus" 
+									data:url="@{/beers}" th:disabled="${sale.notSaveAllowed}"/>
+							</div>
+						</div>
+						
+						<div class="bw-table-beers js-table-beers-container" data:value="${totalValueItems}">
+							<div class="bw-table-beers">
+								<th:block th:replace="sale/table-sale-items" />
+							</div> 
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="delivery">
+						<div class="row">
+							<div class="form-group  col-sm-3" brewer:classforerror="deliveryDate">
+								<label class="control-label" for="deliveryDate">Data da entrega</label>
+								<input type="text" class="form-control" id="deliveryDate" 
+									   th:field="*{deliveryDate}" th:disabled="${sale.notSaveAllowed}"/>
+							</div>
+							
+							<div class="form-group  col-sm-3">
+								<label class="control-label" for="deliveryHour">Horário de entrega</label>
+								<input type="text" class="form-control" id="deliveryHour" 
+									   th:field="*{deliveryHour}" th:disabled="${sale.notSaveAllowed}"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group  col-sm-12">
+								<textarea class="form-control" id="deliveryDate" rows="5" 
+									placeholder="Alguma observação para o entregador desse pedido?" 
+									th:field="*{note}" th:disabled="${sale.notSaveAllowed}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row" style="clear: both" th:if="${sale.saveAllowed}">
+					<div class="col-lg-12">
+						<div class="btn-group">
+						  <button type="submit" class="btn  btn-primary  js-submit-btn" data:action="save">Salvar</button>
+						  <button type="button" class="btn  btn-primary  dropdown-toggle" data-toggle="dropdown">
+						    <span class="caret"></span>
+						  </button>
+						  
+						  <ul class="dropdown-menu">
+						    <li><a href="#" class="js-submit-btn" data:action="issue" >Salvar e emitir</a></li>
+						    <li><a href="#" class="js-submit-btn" data:action="sendEmail" >Salvar e enviar por e-mail</a></li>
+						  </ul>
+						</div>
+					
+						<button class="btn  btn-danger js-submit-btn" data:action="cancel" th:unless="${sale.new}">Cancelar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<th:block th:replace="client/search-speed-clients :: searchSpeedClients"></th:block>
+		<th:block th:replace="hbs/template-autocomplete-beers"></th:block>
+	</section>
+	
+	<th:block layout:fragment="javascript-extra">
+		<script th:src="@{/javascripts/vendors/jquery.easy-autocomplete.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:src="@{/javascripts/client.search-speed.js}"></script>
+		<script th:src="@{/javascripts/sales.autocomplete-items.js}"></script>
+		<script th:src="@{/javascripts/sales.table-items.js}"></script>
+		<script th:src="@{/javascripts/sale.js}"></script>
+		<script th:src="@{/javascripts/sale.buttons-submit.js}"></script>
+		<script>
+			$(function() {
+				$('.js-flaps-sale a').click(function (e) {
+					e.preventDefault();
+					$(this).tab('show');
+				});
+			});
+		</script>
+	</th:block>
+
+</html>

@@ -1,0 +1,15 @@
+<script id="template-autocomplete-beer" type="text/x-handlebars-template">
+	<div class="bw-table-item">
+		<div class="bw-table-item__column  bw-table-item__column--photo">
+			<img th:src="@{/photos/thumbnail.{{photo}}}" class="img-responsive" />
+		</div>
+		<div class="bw-table-item__column  bw-table-item__column--details">
+			<span class="bw-table-beer-name">{{name}}</span>
+			<span class="label  label-default">{{sku}}</span>
+			<span class="bw-table-beer-origin">{{origin}}</span>
+		</div>
+		<div class="bw-table-item__column  bw-table-item__column--values">
+			<div class="bw-table-beer-value-medium">R${{valueFormat}}</div>
+		</div>
+	</div>
+</script>
