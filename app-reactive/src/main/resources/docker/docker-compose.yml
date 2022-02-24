@@ -1,0 +1,33 @@
+version: '3.5'
+
+networks:
+  network-net:
+    driver: bridge
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:13.2
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=appreactivedb
+    networks:
+      - network-net
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/.docker-conf/postgres:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    networks:
+      - network-net
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
