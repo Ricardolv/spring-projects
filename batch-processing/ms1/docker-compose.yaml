@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres-ms1-db:
+    container_name: postgres-ms1-db
+    image: 'postgres:latest'
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_DB: base_1
+      POSTGRES_USER: admin1
+      POSTGRES_PASSWORD: admin1
+
+    volumes:
+    - ./initPostgres.sql:/docker-entrypoint-initdb.d/initPostgres.sql:ro
+    restart: always
