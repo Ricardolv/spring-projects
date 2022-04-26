@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres-ms2-db:
+    container_name: postgres-ms2-db
+    image: 'postgres:latest'
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_DB: base_2
+      POSTGRES_USER: admin2
+      POSTGRES_PASSWORD: admin2
+
+    volumes:
+    - ./initPostgres.sql:/docker-entrypoint-initdb.d/initPostgres.sql:ro
+    restart: always

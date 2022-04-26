@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class BaseDataOndeService {
+public class BaseDataOneService {
 
     private final BaseDataOneRepository repository;
 
