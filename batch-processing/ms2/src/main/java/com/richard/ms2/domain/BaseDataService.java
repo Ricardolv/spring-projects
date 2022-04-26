@@ -8,6 +8,8 @@ import com.richard.ms2.infrastructure.resources.request.BaseData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class BaseDataService {
@@ -17,17 +19,31 @@ public class BaseDataService {
 
     public void save(final BaseData baseData) {
 
-        var baseDataTwo = BaseDataTwo.builder()
-                .nome(baseData.getNome())
-                .descricao(baseData.getDescricao())
-                .build();
+        Optional<BaseDataTwo> baseDataTwoOptional = baseDataTwoRepository.findByNomeAndDescricao(baseData.getNome(),
+                                                                                                 baseData.getDescricao());
 
-        var baseDataThree = BaseDataThree.builder()
-                .email(baseData.getEmail())
-                .senha(baseData.getSenha())
-                .build();
+        if (baseDataTwoOptional.isEmpty()) {
+            var baseDataTwo = BaseDataTwo.builder()
+                    .nome(baseData.getNome())
+                    .descricao(baseData.getDescricao())
+                    .build();
 
-        baseDataTwoRepository.save(baseDataTwo);
-        baseDataThreeRepository.save(baseDataThree);
+            baseDataTwoRepository.save(baseDataTwo);
+
+        }
+
+        Optional<BaseDataThree> baseDataThreeOptional = baseDataThreeRepository.findByEmailAndSenha(baseData.getEmail(),
+                                                                                                    baseData.getSenha());
+
+        if (baseDataThreeOptional.isEmpty()) {
+            var baseDataThree = BaseDataThree.builder()
+                    .email(baseData.getEmail())
+                    .senha(baseData.getSenha())
+                    .build();
+
+            baseDataThreeRepository.save(baseDataThree);
+        }
+
+
     }
 }

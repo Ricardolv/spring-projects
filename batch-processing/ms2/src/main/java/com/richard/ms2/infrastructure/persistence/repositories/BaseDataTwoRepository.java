@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface BaseDataTwoRepository extends JpaRepository<BaseDataTwo, Long> {
 
     Optional<BaseDataTwo> findByNome(String nome);
+    Optional<BaseDataTwo> findByNomeAndDescricao(String nome, String descricao);
 
 }
