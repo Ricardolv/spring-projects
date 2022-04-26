@@ -1,6 +1,6 @@
 package com.richard.ms1.infrastructure.resources;
 
-import com.richard.ms1.domain.BaseDataOndeService;
+import com.richard.ms1.domain.BaseDataOneService;
 import com.richard.ms1.infrastructure.persistence.entities.BaseDataOne;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(path = "one-data")
 public class BaseDataOneResource {
 
-    private final BaseDataOndeService service;
+    private final BaseDataOneService service;
 
     @GetMapping
     public ResponseEntity<List<BaseDataOne>> getAll() {

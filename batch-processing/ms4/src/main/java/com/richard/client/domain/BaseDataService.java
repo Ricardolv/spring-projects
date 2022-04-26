@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -17,24 +18,22 @@ public class BaseDataService {
     private final ObjectMapper objectMapper;
 
     public List<BaseData> getAll() {
+        BaseData[] data = new BaseData[0];
+        Optional<String> jsonOptional = client.getAll();
 
-        List<BaseData> response = List.of();
+        if (jsonOptional.isEmpty()) {
+            return List.of();
+        }
 
-        client.getAll().ifPresent(json -> {
+        String json = jsonOptional.get();
 
-            try {
-                BaseData[] data = objectMapper.readValue(json, BaseData[].class);
+        try {
+            data = objectMapper.readValue(json, BaseData[].class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
 
-                Arrays.asList(data).forEach(item -> response.add(item));
-
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-
-        return response;
+        return Arrays.asList(data);
     }
 
 }
