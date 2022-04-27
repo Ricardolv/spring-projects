@@ -62,7 +62,7 @@ public class BatchConfig {
 
     public Step printOddNumber() {
         return stepBuilderFactory.get("printOddNumber")
-                .<Integer, String> chunk(1)
+                .<Integer, String> chunk(10)
                 .reader(countToTenReader())
                 .processor(evenOrOddProcessor())
                 .writer(printWriter())
