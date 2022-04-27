@@ -14,18 +14,24 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class BatchScheduled {
 
-    private final Job processJob;
+    private final Job processJobOne;
+    private final Job processJobTwo;
     private final JobLauncher jobLauncher;
 
     @Scheduled(cron = "5 * * * * *")
     public void runBatchJob() {
 
-        JobParameters params = new JobParametersBuilder()
-                .addLong("time", System.currentTimeMillis())
+        JobParameters paramsJobOne = new JobParametersBuilder()
+                .addLong("timeJobOne", System.currentTimeMillis())
+                .toJobParameters();
+
+        JobParameters paramsJobTwo = new JobParametersBuilder()
+                .addLong("timeJobTwo", System.currentTimeMillis())
                 .toJobParameters();
 
         try {
-            jobLauncher.run(processJob, params);
+            jobLauncher.run(processJobOne, paramsJobOne);
+            jobLauncher.run(processJobTwo, paramsJobTwo);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

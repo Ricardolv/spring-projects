@@ -15,18 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/job")
 public class JobInvokeResource {
 
-    private final Job processJob;
+    private final Job processJobOne;
+    private final Job processJobTwo;
     private final JobLauncher jobLauncher;
 
     @GetMapping(path = "/invoke")
     public ResponseEntity<String> invoke() {
 
-        JobParameters params = new JobParametersBuilder()
-                .addLong("time", System.currentTimeMillis())
+        JobParameters paramsJobOne = new JobParametersBuilder()
+                .addLong("timeJobOne", System.currentTimeMillis())
+                .toJobParameters();
+
+        JobParameters paramsJobTwo = new JobParametersBuilder()
+                .addLong("timeJobTwo", System.currentTimeMillis())
                 .toJobParameters();
 
         try {
-            jobLauncher.run(processJob, params);
+            jobLauncher.run(processJobOne, paramsJobOne);
+            jobLauncher.run(processJobTwo, paramsJobTwo);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -15,13 +15,19 @@ public class BaseDataClient {
     private final RestTemplate restTemplate;
 
     public Optional<String> getAll() {
+        log.info("{}.getAll() - INICIO.", this.getClass().getName());
+
         try {
-
             var responseEntity = this.restTemplate.getForEntity("/external", String.class);
-            return Optional.ofNullable(responseEntity.getBody());
 
+            log.info("{}.getAll() - FIM.", this.getClass().getName());
+
+            return Optional.ofNullable(responseEntity.getBody());
         } catch (Exception ex) {
+
             log.error(ex.getMessage());
+            log.info("{}.getAll() - FIM.", this.getClass().getName());
+
             return Optional.empty();
         }
     }

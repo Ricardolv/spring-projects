@@ -5,6 +5,9 @@ import com.richard.batch.domain.BaseData;
 import com.richard.batch.infrastructure.batch.jobone.ProcessorJobOne;
 import com.richard.batch.infrastructure.batch.jobone.ReaderJobOne;
 import com.richard.batch.infrastructure.batch.jobone.WriterJobOne;
+import com.richard.batch.infrastructure.batch.jobtwo.ProcessorJobTwo;
+import com.richard.batch.infrastructure.batch.jobtwo.ReaderJobTwo;
+import com.richard.batch.infrastructure.batch.jobtwo.WriterJobTwo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionListener;
@@ -14,6 +17,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @RequiredArgsConstructor
 @Configuration
@@ -26,6 +30,11 @@ public class BatchConfig {
     private final ProcessorJobOne processorJobOne;
     private final WriterJobOne writerJobOne;
 
+    private final ReaderJobTwo readerJobTwo;
+    private final ProcessorJobTwo processorJobTwo;
+    private final WriterJobTwo writerJobTwo;
+
+    @Primary
     @Bean
     public Job processJobOne() {
         return jobBuilderFactory.get("processJobOne")
@@ -39,6 +48,22 @@ public class BatchConfig {
                 .reader(readerJobOne)
                 .processor(processorJobOne)
                 .writer(writerJobOne)
+                .build();
+    }
+
+    @Bean
+    public Job processJobTwo() {
+        return jobBuilderFactory.get("processJobTwo")
+                .incrementer(new RunIdIncrementer()).listener(listener())
+                .flow(orderStepTwo()).end().build();
+    }
+
+    @Bean
+    public Step orderStepTwo() {
+        return stepBuilderFactory.get("orderStepTwo").<BaseData, BaseData> chunk(2)
+                .reader(readerJobTwo)
+                .processor(processorJobTwo)
+                .writer(writerJobTwo)
                 .build();
     }
 

@@ -20,7 +20,7 @@ public class BaseDataClient {
 
     /**
      * request ms1
-     * @return Optional
+     * @return List
      */
     public List<BaseData> getAll() {
         try {
@@ -52,6 +52,25 @@ public class BaseDataClient {
             log.error(ex.getMessage());
         }
 
+    }
+
+    /**
+     * request ms4
+     * @return List
+     */
+    public List<BaseData> getAllExternal() {
+        try {
+
+            var restTemplate = restTemplateConfig.restTemplateBase("http://localhost:8083");
+            var responseEntity = restTemplate.getForEntity("/base-external", String.class);
+            String body = responseEntity.getBody();
+            return Arrays.asList(objectMapper.readValue(body, BaseData[].class));
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+        }
+
+        return List.of();
     }
 
 

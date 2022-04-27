@@ -20,9 +20,12 @@ public class BaseDataService {
         client.save(baseData);
     }
 
-
     public BaseData apply(BaseData baseData) {
         return baseData;
+    }
+
+    public List<BaseData> getAllExternal() {
+        return client.getAllExternal();
     }
 
 

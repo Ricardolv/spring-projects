@@ -6,10 +6,12 @@ import com.richard.ms2.infrastructure.persistence.repositories.BaseDataThreeRepo
 import com.richard.ms2.infrastructure.persistence.repositories.BaseDataTwoRepository;
 import com.richard.ms2.infrastructure.resources.request.BaseData;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BaseDataService {
@@ -18,6 +20,8 @@ public class BaseDataService {
     private final BaseDataThreeRepository baseDataThreeRepository;
 
     public void save(final BaseData baseData) {
+
+        log.info("{}.save() - INICIO.", this.getClass().getName());
 
         Optional<BaseDataTwo> baseDataTwoOptional = baseDataTwoRepository.findByNomeAndDescricao(baseData.getNome(),
                                                                                                  baseData.getDescricao());
@@ -44,6 +48,6 @@ public class BaseDataService {
             baseDataThreeRepository.save(baseDataThree);
         }
 
-
+        log.info("{}.save() - FIM.", this.getClass().getName());
     }
 }
