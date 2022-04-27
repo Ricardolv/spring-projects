@@ -9,10 +9,15 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.function.FunctionItemProcessor;
+import org.springframework.batch.item.support.IteratorItemReader;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @RequiredArgsConstructor
 @EnableBatchProcessing
@@ -47,6 +52,35 @@ public class BatchConfig {
         };
     }
 
+    @Bean
+    public Job printOddNumberJob() {
+        return jobBuilderFactory.get("printOddNumberJob")
+                .start(printOddNumber())
+                .incrementer(new RunIdIncrementer())
+                .build();
+    }
+
+    public Step printOddNumber() {
+        return stepBuilderFactory.get("printOddNumber")
+                .<Integer, String> chunk(1)
+                .reader(countToTenReader())
+                .processor(evenOrOddProcessor())
+                .writer(printWriter())
+                .build();
+    }
+
+    public IteratorItemReader<Integer> countToTenReader() {
+        return new IteratorItemReader<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    }
+
+    public FunctionItemProcessor<Integer, String> evenOrOddProcessor() {
+        return new FunctionItemProcessor<>(item -> item % 2 == 0 ?
+                String.format("Item %s é par", item) : String.format("Item %s é impar", item));
+    }
+
+    public ItemWriter<? super String> printWriter() {
+        return itens -> itens.forEach(System.out::println);
+    }
 
 
 }
