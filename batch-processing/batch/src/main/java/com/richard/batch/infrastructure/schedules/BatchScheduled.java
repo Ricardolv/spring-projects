@@ -5,6 +5,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class BatchScheduled {
 
+    @Qualifier(value = "processJobOne")
     private final Job processJobOne;
+
+    @Qualifier(value = "processJobTwo")
     private final Job processJobTwo;
     private final JobLauncher jobLauncher;
 

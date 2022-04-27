@@ -5,6 +5,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/job")
 public class JobInvokeResource {
 
+    @Qualifier(value = "processJobOne")
     private final Job processJobOne;
+
+    @Qualifier(value = "processJobTwo")
     private final Job processJobTwo;
     private final JobLauncher jobLauncher;
 
