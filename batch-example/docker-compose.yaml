@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  postgres-batch-db:
+    container_name: postgres-batch-db
+    image: 'postgres:latest'
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: batch
+      POSTGRES_USER: admin1
+      POSTGRES_PASSWORD: admin1
+    restart: always
