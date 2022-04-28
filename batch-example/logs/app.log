@@ -1,0 +1,18 @@
+2022-04-28 14:35:24,755 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 14873 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-04-28 14:35:24,757 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-04-28 14:35:25,268 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-04-28 14:35:25,475 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-04-28 14:35:25,627 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-04-28 14:35:25,714 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-04-28 14:35:25,828 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-04-28 14:35:25,900 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.508 seconds (JVM running for 2.274)
+2022-04-28 14:35:26,027 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{name=Bernardo, run.id=4}]
+2022-04-28 14:35:26,071 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-04-28 14:35:26,101 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 30ms
+2022-04-28 14:35:26,123 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{name=Bernardo, run.id=4}] and the following status: [COMPLETED] in 69ms
+2022-04-28 14:35:26,180 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{name=Bernardo, run.id=4}]
+2022-04-28 14:35:26,199 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-04-28 14:35:26,232 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 32ms
+2022-04-28 14:35:26,253 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{name=Bernardo, run.id=4}] and the following status: [COMPLETED] in 64ms
+2022-04-28 14:35:26,260 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-04-28 14:35:26,273 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
