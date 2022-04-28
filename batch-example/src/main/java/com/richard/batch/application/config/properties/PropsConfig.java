@@ -1,4 +1,4 @@
-package com.richard.batch.application.config;
+package com.richard.batch.application.config.properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
