@@ -15,10 +15,10 @@ public class FixedWidthFileDelimitedReaderConfig {
     @StepScope
     @Bean
     public FlatFileItemReader<Client> fixedWidthFileDelimitedReader(
-            @Value("#{jobParameters['fileClientsDelimit']}") Resource fileClients) {
+            @Value("#{jobParameters['fileClientsDelimit']}") Resource fileClientsDelimit) {
         return new FlatFileItemReaderBuilder<Client>()
                 .name("fixedWidthFileDelimitedReader")
-                .resource(fileClients)
+                .resource(fileClientsDelimit)
                 .delimited()
                 .names(new String[] {"name", "lastName", "age", "email"})
                 .targetType(Client.class)
