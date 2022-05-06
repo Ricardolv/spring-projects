@@ -1306,3 +1306,434 @@ Caused by: org.springframework.batch.item.file.transform.IncorrectLineLengthExce
 2022-04-28 17:28:08,638 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=21}] and the following status: [COMPLETED] in 65ms
 2022-04-28 17:28:08,642 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2022-04-28 17:28:08,648 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-04-28 17:36:07,718 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 20377 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-04-28 17:36:07,721 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-04-28 17:36:08,202 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-04-28 17:36:08,438 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-04-28 17:36:08,594 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-04-28 17:36:08,682 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-04-28 17:36:08,801 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-04-28 17:36:08,861 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.497 seconds (JVM running for 2.42)
+2022-04-28 17:36:09,026 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=18}]
+2022-04-28 17:36:09,065 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileStep]
+2022-04-28 17:36:09,134 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step fixedWidthFileStep in job fixedWidthFileJob
+java.lang.Exception: null
+	at com.richard.batch.infrastructure.batch.files.writers.FixedWidthFileFlatWriterConfig.lambda$fixedWidthFileWriter$0(FixedWidthFileWriterConfig.java:17) ~[classes/:?]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:193) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:159) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.write(SimpleChunkProcessor.java:294) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:217) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:77) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy66.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+2022-04-28 17:36:09,145 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileStep] executed in 80ms
+2022-04-28 17:36:09,161 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=18}] and the following status: [FAILED] in 113ms
+2022-04-28 17:36:09,199 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=22}]
+2022-04-28 17:36:09,216 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-04-28 17:36:09,234 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 17ms
+2022-04-28 17:36:09,254 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=22}] and the following status: [COMPLETED] in 44ms
+2022-04-28 17:36:09,321 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=22}]
+2022-04-28 17:36:09,348 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-04-28 17:36:09,377 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 29ms
+2022-04-28 17:36:09,392 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=22}] and the following status: [COMPLETED] in 65ms
+2022-04-28 17:36:09,396 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-04-28 17:36:09,402 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-04-28 18:38:28,776 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 21552 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-04-28 18:38:28,780 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-04-28 18:38:29,308 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-04-28 18:38:29,551 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-04-28 18:38:29,698 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-04-28 18:38:29,782 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-04-28 18:38:29,893 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-04-28 18:38:29,952 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.581 seconds (JVM running for 2.384)
+2022-04-28 18:38:30,071 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=19}]
+2022-04-28 18:38:30,115 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileStep]
+2022-04-28 18:38:30,201 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileStep] executed in 86ms
+2022-04-28 18:38:30,214 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=19}] and the following status: [COMPLETED] in 121ms
+2022-04-28 18:38:30,247 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=23}]
+2022-04-28 18:38:30,262 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-04-28 18:38:30,278 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 16ms
+2022-04-28 18:38:30,297 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=23}] and the following status: [COMPLETED] in 42ms
+2022-04-28 18:38:30,355 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=23}]
+2022-04-28 18:38:30,383 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-04-28 18:38:30,410 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 27ms
+2022-04-28 18:38:30,424 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{name=Bernardo, fileClients=file:files/clients.txt, run.id=23}] and the following status: [COMPLETED] in 63ms
+2022-04-28 18:38:30,428 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-04-28 18:38:30,434 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-04-28 18:39:27,604 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 21571 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-04-28 18:39:27,607 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-04-28 18:39:28,079 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-04-28 18:39:28,324 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-04-28 18:39:28,470 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-04-28 18:39:28,549 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-04-28 18:39:28,669 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-04-28 18:39:28,729 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.49 seconds (JVM running for 2.212)
+2022-04-28 18:39:28,799 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] launched with the following parameters: [{fileClients=file:files/clients.txt}]
+2022-04-28 18:39:28,845 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileStep]
+2022-04-28 18:39:28,913 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step fixedWidthFileStep in job fixedWidthFileJob
+java.lang.Exception: null
+	at com.richard.batch.infrastructure.batch.files.writers.FixedWidthFileFlatWriterConfig.lambda$fixedWidthFileWriter$0(FixedWidthFileWriterConfig.java:17) ~[classes/:?]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:193) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:159) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.write(SimpleChunkProcessor.java:294) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:217) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:77) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy66.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+2022-04-28 18:39:28,925 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileStep] executed in 80ms
+2022-04-28 18:39:28,940 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] completed with the following parameters: [{fileClients=file:files/clients.txt}] and the following status: [FAILED] in 119ms
+2022-04-28 18:39:28,966 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=1}]
+2022-04-28 18:39:28,981 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-04-28 18:39:28,996 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 15ms
+2022-04-28 18:39:29,010 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=1}] and the following status: [COMPLETED] in 37ms
+2022-04-28 18:39:29,067 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=1}]
+2022-04-28 18:39:29,100 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-04-28 18:39:29,138 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 38ms
+2022-04-28 18:39:29,155 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=1}] and the following status: [COMPLETED] in 81ms
+2022-04-28 18:39:29,159 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-04-28 18:39:29,166 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-04-28 18:40:14,450 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 21585 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-04-28 18:40:14,452 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-04-28 18:40:14,880 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-04-28 18:40:15,092 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-04-28 18:40:15,231 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-04-28 18:40:15,295 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-04-28 18:40:15,375 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-04-28 18:40:15,429 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.24 seconds (JVM running for 1.903)
+2022-04-28 18:40:15,521 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] launched with the following parameters: [{fileClients=file:files/clients.txt}]
+2022-04-28 18:40:15,554 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileStep]
+2022-04-28 18:40:15,638 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileStep] executed in 83ms
+2022-04-28 18:40:15,656 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileJob]] completed with the following parameters: [{fileClients=file:files/clients.txt}] and the following status: [COMPLETED] in 119ms
+2022-04-28 18:40:15,701 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=2}]
+2022-04-28 18:40:15,718 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-04-28 18:40:15,733 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 15ms
+2022-04-28 18:40:15,745 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=2}] and the following status: [COMPLETED] in 39ms
+2022-04-28 18:40:15,775 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClients=file:files/clients.txt, run.id=2}]
+2022-04-28 18:40:15,791 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-04-28 18:40:15,811 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 20ms
+2022-04-28 18:40:15,826 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClients=file:files/clients.txt, run.id=2}] and the following status: [COMPLETED] in 44ms
+2022-04-28 18:40:15,830 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-04-28 18:40:15,838 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-06 09:22:16,227 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 2573 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 09:22:16,230 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 09:22:16,537 WARN o.s.c.a.AnnotationConfigApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'fixedWidthFileFlatWriter' defined in class path resource [com/richard/batch/infrastructure/batch/files/writers/FixedWidthFileFlatWriterConfig.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=fixedWidthFileFlatWriterConfig; factoryMethodName=fixedWidthFileFlatWriter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/richard/batch/infrastructure/batch/files/writers/FixedWidthFileFlatWriterConfig.class]] for bean 'fixedWidthFileFlatWriter': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=fixedWidthFileDelimitedWriterConfig; factoryMethodName=fixedWidthFileFlatWriter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/richard/batch/infrastructure/batch/files/writers/FixedWidthFileDelimitedWriterConfig.class]] bound.
+2022-05-06 09:23:09,048 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 2583 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 09:23:09,053 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 09:23:09,598 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-06 09:23:09,857 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 09:23:10,159 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-06 09:23:10,259 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-06 09:23:10,433 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-06 09:23:10,501 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.822 seconds (JVM running for 2.613)
+2022-05-06 09:23:10,602 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt}]
+2022-05-06 09:23:10,656 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-06 09:23:10,710 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step fixedWidthFileDelimitedStep in job fixedWidthFileDelimitedJob
+org.springframework.batch.item.file.FlatFileParseException: Parsing error at line: 1 in resource=[URL [file:files/clients-flat.txt]], input=[João      Silva     32 joao@test.com       ]
+	at org.springframework.batch.item.file.FlatFileItemReader.doRead(FlatFileItemReader.java:189) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.read(AbstractItemCountingItemStreamItemReader.java:93) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader$$FastClassBySpringCGLIB$$ebb633d0.invoke(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:137) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.item.file.FlatFileItemReader$$EnhancerBySpringCGLIB$$48ec0b4c.read(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.doRead(SimpleChunkProvider.java:99) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.read(SimpleChunkProvider.java:180) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider$1.doInIteration(SimpleChunkProvider.java:126) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.provide(SimpleChunkProvider.java:118) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:71) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy66.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+Caused by: org.springframework.batch.item.file.transform.IncorrectTokenCountException: Incorrect number of tokens found in record: expected 4 actual 1
+	at org.springframework.batch.item.file.transform.AbstractLineTokenizer.tokenize(AbstractLineTokenizer.java:143) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.file.mapping.DefaultLineMapper.mapLine(DefaultLineMapper.java:43) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.file.FlatFileItemReader.doRead(FlatFileItemReader.java:185) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	... 59 more
+2022-05-06 09:23:10,725 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 67ms
+2022-05-06 09:23:10,743 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt}] and the following status: [FAILED] in 118ms
+2022-05-06 09:23:10,771 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt}]
+2022-05-06 09:23:10,787 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-06 09:23:10,823 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 36ms
+2022-05-06 09:23:10,838 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt}] and the following status: [COMPLETED] in 60ms
+2022-05-06 09:23:10,950 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=3}]
+2022-05-06 09:23:10,995 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-06 09:23:11,022 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 26ms
+2022-05-06 09:23:11,050 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=3}] and the following status: [COMPLETED] in 86ms
+2022-05-06 09:23:11,102 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=3}]
+2022-05-06 09:23:11,119 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-06 09:23:11,140 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 20ms
+2022-05-06 09:23:11,152 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=3}] and the following status: [COMPLETED] in 45ms
+2022-05-06 09:23:11,158 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-06 09:23:11,168 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-06 09:25:21,962 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 2609 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 09:25:21,965 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 09:25:22,485 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-06 09:25:22,741 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 09:25:22,882 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-06 09:25:22,962 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-06 09:25:23,070 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-06 09:25:23,124 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.554 seconds (JVM running for 2.462)
+2022-05-06 09:25:23,186 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:25:23,248 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-06 09:25:23,281 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step fixedWidthFileDelimitedStep in job fixedWidthFileDelimitedJob
+org.springframework.batch.item.ItemStreamException: Failed to initialize the reader
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.open(AbstractItemCountingItemStreamItemReader.java:153) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader$$FastClassBySpringCGLIB$$ebb633d0.invoke(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:137) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.item.file.FlatFileItemReader$$EnhancerBySpringCGLIB$$fbf9d15c.open(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.CompositeItemStream.open(CompositeItemStream.java:104) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.open(TaskletStep.java:311) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:205) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy66.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+Caused by: java.lang.IllegalArgumentException: Input resource must be set
+	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.item.file.FlatFileItemReader.doOpen(FlatFileItemReader.java:251) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.open(AbstractItemCountingItemStreamItemReader.java:150) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	... 43 more
+2022-05-06 09:25:23,297 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 49ms
+2022-05-06 09:25:23,315 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [FAILED] in 102ms
+2022-05-06 09:25:23,339 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:25:23,355 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-06 09:25:23,362 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step fixedWidthFileFlatStep in job fixedWidthFileFlatJob
+org.springframework.batch.item.ItemStreamException: Failed to initialize the reader
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.open(AbstractItemCountingItemStreamItemReader.java:153) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader$$FastClassBySpringCGLIB$$ebb633d0.invoke(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:137) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.item.file.FlatFileItemReader$$EnhancerBySpringCGLIB$$fbf9d15c.open(<generated>) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.CompositeItemStream.open(CompositeItemStream.java:104) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.open(TaskletStep.java:311) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:205) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy66.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+Caused by: java.lang.IllegalStateException: Input resource must exist (reader is in 'strict' mode): URL [file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt]
+	at org.springframework.batch.item.file.FlatFileItemReader.doOpen(FlatFileItemReader.java:257) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.open(AbstractItemCountingItemStreamItemReader.java:150) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	... 43 more
+2022-05-06 09:25:23,366 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 11ms
+2022-05-06 09:25:23,378 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [FAILED] in 33ms
+2022-05-06 09:25:23,482 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt, run.id=4}]
+2022-05-06 09:25:23,521 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-06 09:25:23,547 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 26ms
+2022-05-06 09:25:23,562 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt, run.id=4}] and the following status: [COMPLETED] in 72ms
+2022-05-06 09:25:23,601 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt, run.id=4}]
+2022-05-06 09:25:23,616 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-06 09:25:23,638 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 21ms
+2022-05-06 09:25:23,650 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt;fileClientsDelimit=file:files/clients-delimited.txt, run.id=4}] and the following status: [COMPLETED] in 44ms
+2022-05-06 09:25:23,653 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-06 09:25:23,658 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-06 09:33:05,727 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 2723 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 09:33:05,731 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 09:33:06,269 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-06 09:33:06,522 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 09:33:06,680 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-06 09:33:06,776 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-06 09:33:06,891 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-06 09:33:06,960 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.652 seconds (JVM running for 2.619)
+2022-05-06 09:33:07,099 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:33:07,139 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-06 09:33:07,210 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 71ms
+2022-05-06 09:33:07,225 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [COMPLETED] in 105ms
+2022-05-06 09:33:07,264 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:33:07,280 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-06 09:33:07,301 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 21ms
+2022-05-06 09:33:07,319 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [COMPLETED] in 47ms
+2022-05-06 09:33:07,392 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=5, fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:33:07,430 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-06 09:33:07,452 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 21ms
+2022-05-06 09:33:07,468 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=5, fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [COMPLETED] in 70ms
+2022-05-06 09:33:07,504 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=5, fileClientsDelimit=file:files/clients-delimited.txt}]
+2022-05-06 09:33:07,519 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-06 09:33:07,546 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 27ms
+2022-05-06 09:33:07,567 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClients=file:files/clients-flat.txt, run.id=5, fileClientsDelimit=file:files/clients-delimited.txt}] and the following status: [COMPLETED] in 54ms
+2022-05-06 09:33:07,572 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-06 09:33:07,580 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

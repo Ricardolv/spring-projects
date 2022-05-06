@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class FixedWidthFileStepConfig {
+public class FixedWidthFileFlatStepConfig {
 
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Step fixedWidthFileStep(ItemReader<Client> fixedWidthFileReader, ItemWriter<Client> fixedWidthFileWriter) {
+    public Step fixedWidthFileFlatStep(ItemReader<Client> fixedWidthFileFlatReader, ItemWriter<Client> fixedWidthFileFlatWriter) {
         return stepBuilderFactory
-                .get("fixedWidthFileStep")
-                .<Client, Client>chunk(1)
-                .reader(fixedWidthFileReader)
-                .writer(fixedWidthFileWriter)
+                .get("fixedWidthFileFlatStep")
+                .<Client, Client>chunk(4)
+                .reader(fixedWidthFileFlatReader)
+                .writer(fixedWidthFileFlatWriter)
                 .build();
     }
 }
