@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -19,5 +22,6 @@ public class Client {
     private String lastName;
     private String age;
     private String email;
+    private List<Transaction> transactions = new ArrayList<>();
 
 }

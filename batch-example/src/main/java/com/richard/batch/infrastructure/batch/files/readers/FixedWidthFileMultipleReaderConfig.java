@@ -1,6 +1,5 @@
 package com.richard.batch.infrastructure.batch.files.readers;
 
-import com.richard.batch.domain.Client;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
@@ -15,9 +14,10 @@ public class FixedWidthFileMultipleReaderConfig {
 
     @StepScope
     @Bean
-    public FlatFileItemReader<Client> fixedWidthFileMultipleReader(
-            @Value("#{jobParameters['fileClientsFileMultiple']}") Resource fileClientsFileMultiple, LineMapper lineMapper) {
-        return new FlatFileItemReaderBuilder<Client>()
+    public FlatFileItemReader fixedWidthFileMultipleReader(
+            @Value("#{jobParameters['fileClientsFileMultiple']}") Resource fileClientsFileMultiple,
+            LineMapper lineMapper) {
+        return new FlatFileItemReaderBuilder()
                 .name("fixedWidthFileMultipleReader")
                 .resource(fileClientsFileMultiple)
                 .lineMapper(lineMapper)
