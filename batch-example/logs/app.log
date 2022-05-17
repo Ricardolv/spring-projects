@@ -2736,3 +2736,339 @@ java.lang.UnsupportedOperationException: null
 2022-05-06 22:00:15,860 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=10}] and the following status: [COMPLETED] in 67ms
 2022-05-06 22:00:15,865 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2022-05-06 22:00:15,871 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-06 22:40:44,589 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 12700 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 22:40:44,592 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 22:40:45,144 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-06 22:40:45,421 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 22:40:46,562 ERROR c.z.h.p.HikariPool [main] HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "batch_db" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2787) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:173) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:290) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.makeConnection(Driver.java:402) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.connect(Driver.java:261) ~[postgresql-42.3.4.jar:42.3.4]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:?]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:330) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:162) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.isEmbeddedDatabase(DataSourceScriptDatabaseInitializer.java:70) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.isEnabled(AbstractScriptDatabaseInitializer.java:83) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:106) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:97) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:75) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+2022-05-06 22:40:46,573 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 22:40:47,600 ERROR c.z.h.p.HikariPool [main] HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "batch_db" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2787) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:173) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:290) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.makeConnection(Driver.java:402) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.connect(Driver.java:261) ~[postgresql-42.3.4.jar:42.3.4]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:?]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:330) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:162) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.isEmbeddedDatabase(DataSourceScriptDatabaseInitializer.java:70) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.isEnabled(AbstractScriptDatabaseInitializer.java:83) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:106) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+2022-05-06 22:40:47,612 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 22:40:48,642 ERROR c.z.h.p.HikariPool [main] HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "batch_db" does not exist
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2787) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:173) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:290) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.makeConnection(Driver.java:402) ~[postgresql-42.3.4.jar:42.3.4]
+	at org.postgresql.Driver.connect(Driver.java:261) ~[postgresql-42.3.4.jar:42.3.4]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:?]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:337) ~[spring-jdbc-5.3.19.jar:5.3.19]
+	at org.springframework.boot.jdbc.DatabaseDriver.fromDataSource(DatabaseDriver.java:332) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.getDatabaseDriver(PlatformPlaceholderDatabaseDriverResolver.java:137) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.determinePlatform(PlatformPlaceholderDatabaseDriverResolver.java:131) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.lambda$resolveAll$0(PlatformPlaceholderDatabaseDriverResolver.java:96) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.resolveAll(PlatformPlaceholderDatabaseDriverResolver.java:121) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.resolveAll(PlatformPlaceholderDatabaseDriverResolver.java:96) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.resolveSchemaLocations(BatchDataSourceScriptDatabaseInitializer.java:86) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.getSettings(BatchDataSourceScriptDatabaseInitializer.java:73) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.<init>(BatchDataSourceScriptDatabaseInitializer.java:48) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$DataSourceInitializerConfiguration.batchDataSourceInitializer(BatchAutoConfiguration.java:117) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.19.jar:5.3.19]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+2022-05-06 22:40:48,645 WARN o.s.c.a.AnnotationConfigApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'batchDataSourceInitializer' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration$DataSourceInitializerConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer]: Factory method 'batchDataSourceInitializer' threw exception; nested exception is java.lang.IllegalStateException: Unable to detect database type
+2022-05-06 22:41:38,138 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 12709 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-06 22:41:38,142 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 22:41:38,719 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-06 22:41:38,984 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-06 22:41:39,146 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-06 22:41:39,245 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-06 22:41:39,366 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-06 22:41:39,431 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.688 seconds (JVM running for 2.54)
+2022-05-06 22:41:39,583 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=4}]
+2022-05-06 22:41:39,625 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-06 22:41:39,777 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 151ms
+2022-05-06 22:41:39,794 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=4}] and the following status: [COMPLETED] in 187ms
+2022-05-06 22:41:39,861 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}]
+2022-05-06 22:41:39,895 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-06 22:41:39,926 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 31ms
+2022-05-06 22:41:39,944 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}] and the following status: [COMPLETED] in 75ms
+2022-05-06 22:41:39,997 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}]
+2022-05-06 22:41:40,027 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-06 22:41:40,066 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 39ms
+2022-05-06 22:41:40,091 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}] and the following status: [COMPLETED] in 83ms
+2022-05-06 22:41:40,151 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}]
+2022-05-06 22:41:40,174 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-06 22:41:40,282 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 108ms
+2022-05-06 22:41:40,312 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}] and the following status: [COMPLETED] in 146ms
+2022-05-06 22:41:40,401 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}]
+2022-05-06 22:41:40,428 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-06 22:41:40,462 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 34ms
+2022-05-06 22:41:40,495 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}] and the following status: [COMPLETED] in 83ms
+2022-05-06 22:41:40,578 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}]
+2022-05-06 22:41:40,600 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-06 22:41:40,633 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 33ms
+2022-05-06 22:41:40,655 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}] and the following status: [COMPLETED] in 67ms
+2022-05-06 22:41:40,666 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-06 22:41:40,679 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-17 15:08:41,839 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 14702 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-17 15:08:41,842 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-17 15:08:42,376 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-17 15:08:42,653 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-17 15:08:42,942 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-17 15:08:43,061 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-17 15:08:43,163 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-17 15:08:43,231 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.79 seconds (JVM running for 2.625)
+2022-05-17 15:08:43,394 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=5}]
+2022-05-17 15:08:43,445 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-17 15:08:43,580 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 134ms
+2022-05-17 15:08:43,593 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=5}] and the following status: [COMPLETED] in 176ms
+2022-05-17 15:08:43,648 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}]
+2022-05-17 15:08:43,679 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-17 15:08:43,712 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 33ms
+2022-05-17 15:08:43,730 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}] and the following status: [COMPLETED] in 74ms
+2022-05-17 15:08:43,768 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}]
+2022-05-17 15:08:43,782 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-17 15:08:43,800 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 18ms
+2022-05-17 15:08:43,810 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}] and the following status: [COMPLETED] in 37ms
+2022-05-17 15:08:43,837 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}]
+2022-05-17 15:08:43,847 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-17 15:08:43,898 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 51ms
+2022-05-17 15:08:43,918 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}] and the following status: [COMPLETED] in 73ms
+2022-05-17 15:08:43,976 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}]
+2022-05-17 15:08:43,993 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-17 15:08:44,008 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 15ms
+2022-05-17 15:08:44,019 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}] and the following status: [COMPLETED] in 39ms
+2022-05-17 15:08:44,056 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}]
+2022-05-17 15:08:44,082 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-17 15:08:44,115 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 33ms
+2022-05-17 15:08:44,131 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=12}] and the following status: [COMPLETED] in 67ms
+2022-05-17 15:08:44,137 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-17 15:08:44,145 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-17 15:10:55,349 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 14728 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-17 15:10:55,353 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-17 15:10:55,900 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-17 15:10:56,163 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-17 15:10:56,308 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-17 15:10:56,383 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-17 15:10:56,470 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-17 15:10:56,525 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.632 seconds (JVM running for 2.699)
+2022-05-17 15:10:56,641 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=6}]
+2022-05-17 15:10:56,680 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-17 15:10:56,799 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 118ms
+2022-05-17 15:10:56,809 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=6}] and the following status: [COMPLETED] in 146ms
+2022-05-17 15:10:56,837 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}]
+2022-05-17 15:10:56,849 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-17 15:10:56,873 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 24ms
+2022-05-17 15:10:56,890 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}] and the following status: [COMPLETED] in 46ms
+2022-05-17 15:10:56,945 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}]
+2022-05-17 15:10:56,965 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-17 15:10:56,986 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 21ms
+2022-05-17 15:10:56,997 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}] and the following status: [COMPLETED] in 48ms
+2022-05-17 15:10:57,027 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}]
+2022-05-17 15:10:57,038 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-17 15:10:57,077 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 39ms
+2022-05-17 15:10:57,095 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}] and the following status: [COMPLETED] in 60ms
+2022-05-17 15:10:57,149 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}]
+2022-05-17 15:10:57,170 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-17 15:10:57,187 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 17ms
+2022-05-17 15:10:57,198 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}] and the following status: [COMPLETED] in 43ms
+2022-05-17 15:10:57,229 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}]
+2022-05-17 15:10:57,242 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-17 15:10:57,259 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 17ms
+2022-05-17 15:10:57,274 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=13}] and the following status: [COMPLETED] in 38ms
+2022-05-17 15:10:57,280 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-17 15:10:57,290 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-17 15:14:18,681 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 14811 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-17 15:14:18,686 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-17 15:14:19,192 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-17 15:14:19,470 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-17 15:14:19,619 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-17 15:14:19,708 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-17 15:14:19,808 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-17 15:14:19,866 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.591 seconds (JVM running for 2.549)
+2022-05-17 15:14:19,973 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=7}]
+2022-05-17 15:14:20,010 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-17 15:14:20,133 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 122ms
+2022-05-17 15:14:20,147 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=7}] and the following status: [COMPLETED] in 150ms
+2022-05-17 15:14:20,208 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}]
+2022-05-17 15:14:20,244 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-17 15:14:20,277 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 33ms
+2022-05-17 15:14:20,296 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}] and the following status: [COMPLETED] in 81ms
+2022-05-17 15:14:20,337 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}]
+2022-05-17 15:14:20,351 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-17 15:14:20,369 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 18ms
+2022-05-17 15:14:20,379 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}] and the following status: [COMPLETED] in 38ms
+2022-05-17 15:14:20,407 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}]
+2022-05-17 15:14:20,423 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-17 15:14:20,480 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 57ms
+2022-05-17 15:14:20,499 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}] and the following status: [COMPLETED] in 83ms
+2022-05-17 15:14:20,549 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}]
+2022-05-17 15:14:20,564 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-17 15:14:20,578 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 13ms
+2022-05-17 15:14:20,588 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}] and the following status: [COMPLETED] in 35ms
+2022-05-17 15:14:20,618 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}]
+2022-05-17 15:14:20,632 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-17 15:14:20,668 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 35ms
+2022-05-17 15:14:20,688 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=14}] and the following status: [COMPLETED] in 61ms
+2022-05-17 15:14:20,696 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-17 15:14:20,707 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-17 15:19:51,059 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 14895 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-17 15:19:51,062 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-17 15:19:51,574 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-17 15:19:51,846 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-17 15:19:52,002 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-17 15:19:52,082 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-17 15:19:52,172 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-17 15:19:52,226 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.524 seconds (JVM running for 2.504)
+2022-05-17 15:19:52,339 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=8}]
+2022-05-17 15:19:52,378 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-17 15:19:52,506 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 127ms
+2022-05-17 15:19:52,520 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=8}] and the following status: [COMPLETED] in 157ms
+2022-05-17 15:19:52,559 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}]
+2022-05-17 15:19:52,581 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-17 15:19:52,611 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 30ms
+2022-05-17 15:19:52,629 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}] and the following status: [COMPLETED] in 62ms
+2022-05-17 15:19:52,684 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}]
+2022-05-17 15:19:52,700 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-17 15:19:52,721 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 21ms
+2022-05-17 15:19:52,731 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}] and the following status: [COMPLETED] in 42ms
+2022-05-17 15:19:52,763 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}]
+2022-05-17 15:19:52,784 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-17 15:19:52,844 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 60ms
+2022-05-17 15:19:52,862 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=16}] and the following status: [COMPLETED] in 91ms
+2022-05-17 15:19:52,895 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=1}]
+2022-05-17 15:19:52,913 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [jdbcCursorStep]
+2022-05-17 15:19:52,917 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
+2022-05-17 15:19:52,946 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
+2022-05-17 15:19:52,972 INFO o.s.b.c.s.AbstractStep [main] Step: [jdbcCursorStep] executed in 59ms
+2022-05-17 15:19:52,987 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=1}] and the following status: [COMPLETED] in 85ms
+2022-05-17 15:19:53,037 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}]
+2022-05-17 15:19:53,058 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-17 15:19:53,082 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 23ms
+2022-05-17 15:19:53,097 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}] and the following status: [COMPLETED] in 54ms
+2022-05-17 15:19:53,130 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}]
+2022-05-17 15:19:53,144 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-17 15:19:53,159 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 15ms
+2022-05-17 15:19:53,168 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=15}] and the following status: [COMPLETED] in 34ms
+2022-05-17 15:19:53,171 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
+2022-05-17 15:19:53,195 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.
+2022-05-17 15:19:53,195 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-17 15:19:53,200 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
