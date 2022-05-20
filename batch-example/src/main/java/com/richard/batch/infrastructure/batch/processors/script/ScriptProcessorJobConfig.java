@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.processors.compound;
+package com.richard.batch.infrastructure.batch.processors.script;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -10,15 +10,15 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class CompositeProcessorJobConfig {
+public class ScriptProcessorJobConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
 
     @Bean
-    public Job compositeProcessorJob(Step compositeProcessorStep) {
+    public Job scriptProcessorJob(Step scriptProcessorStep) {
         return jobBuilderFactory
-                .get("compositeProcessorJob")
-                .start(compositeProcessorStep)
+                .get("scriptProcessorJob")
+                .start(scriptProcessorStep)
                 .incrementer(new RunIdIncrementer())
                 .build();
     }

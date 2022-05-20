@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.processors.compound.reader;
+package com.richard.batch.infrastructure.batch.processors.composite.reader;
 
 import com.richard.batch.domain.ClientProcessor;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.processors.compound;
+package com.richard.batch.infrastructure.batch.processors.script;
 
 import com.richard.batch.domain.ClientProcessor;
 import lombok.RequiredArgsConstructor;
@@ -12,20 +12,20 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class CompositeProcessorStepConfig {
+public class ScriptProcessorStepConfig {
 
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Step compositeProcessorStep(ItemReader<ClientProcessor> itemCompositeProcessorReader,
-                                       ItemProcessor<ClientProcessor, ClientProcessor> itemCompositeProcessor,
-                                       ItemWriter<ClientProcessor> itemCompositeProcessorWriter) {
+    public Step scriptProcessorStep(ItemReader<ClientProcessor> itemScriptProcessorReader,
+                                       ItemProcessor<ClientProcessor, ClientProcessor> itemScriptProcessor,
+                                       ItemWriter<ClientProcessor> itemScriptProcessorWriter) {
         return stepBuilderFactory
-                .get("compositeProcessorStep")
+                .get("scriptProcessorStep")
                 .<ClientProcessor, ClientProcessor>chunk(1)
-                .reader(itemCompositeProcessorReader)
-                .processor(itemCompositeProcessor)
-                .writer(itemCompositeProcessorWriter)
+                .reader(itemScriptProcessorReader)
+                .processor(itemScriptProcessor)
+                .writer(itemScriptProcessorWriter)
                 .build();
     }
 

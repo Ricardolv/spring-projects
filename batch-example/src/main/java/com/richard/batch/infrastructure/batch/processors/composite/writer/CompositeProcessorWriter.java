@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.processors.compound.writer;
+package com.richard.batch.infrastructure.batch.processors.composite.writer;
 
 import com.richard.batch.domain.ClientProcessor;
 import lombok.RequiredArgsConstructor;
