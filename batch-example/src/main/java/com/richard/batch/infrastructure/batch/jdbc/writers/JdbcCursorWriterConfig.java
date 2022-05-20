@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.files.writers;
+package com.richard.batch.infrastructure.batch.jdbc.writers;
 
 import com.richard.batch.domain.Client;
 import org.springframework.batch.item.ItemWriter;
@@ -11,7 +11,7 @@ public class JdbcCursorWriterConfig {
 
     @Bean
     public ItemWriter<Client> jdbcCursorWriter() {
-        return clientes -> clientes.forEach(System.out::println);
+        return clients -> clients.forEach(System.out::println);
     }
 
 }

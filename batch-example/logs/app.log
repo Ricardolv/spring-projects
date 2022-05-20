@@ -3118,3 +3118,161 @@ org.postgresql.util.PSQLException: FATAL: database "batch_db" does not exist
 2022-05-17 15:37:44,357 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
 2022-05-17 15:37:44,359 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
 2022-05-17 15:37:44,366 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.
+2022-05-19 16:53:53,956 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 12551 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-19 16:53:53,959 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-19 16:53:54,598 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-19 16:53:54,929 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-19 16:53:55,115 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-19 16:53:55,171 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
+2022-05-19 16:53:55,269 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
+2022-05-19 16:53:55,357 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-19 16:53:55,473 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-19 16:53:55,537 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 1.961 seconds (JVM running for 2.93)
+2022-05-19 16:53:55,684 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=10}]
+2022-05-19 16:53:55,737 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-19 16:53:55,870 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 132ms
+2022-05-19 16:53:55,885 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=10}] and the following status: [COMPLETED] in 173ms
+2022-05-19 16:53:55,948 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}]
+2022-05-19 16:53:55,972 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-19 16:53:56,013 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 41ms
+2022-05-19 16:53:56,025 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}] and the following status: [COMPLETED] in 72ms
+2022-05-19 16:53:56,059 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}]
+2022-05-19 16:53:56,071 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-19 16:53:56,087 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 16ms
+2022-05-19 16:53:56,100 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}] and the following status: [COMPLETED] in 34ms
+2022-05-19 16:53:56,151 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}]
+2022-05-19 16:53:56,173 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-19 16:53:56,221 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 48ms
+2022-05-19 16:53:56,231 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}] and the following status: [COMPLETED] in 76ms
+2022-05-19 16:53:56,270 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=3}]
+2022-05-19 16:53:56,282 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [jdbcCursorStep]
+2022-05-19 16:53:56,429 INFO o.s.b.c.s.AbstractStep [main] Step: [jdbcCursorStep] executed in 146ms
+2022-05-19 16:53:56,440 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=3}] and the following status: [COMPLETED] in 166ms
+2022-05-19 16:53:56,471 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcPaginJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=2}]
+2022-05-19 16:53:56,483 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [jdbcPaginStep]
+2022-05-19 16:53:56,511 INFO o.s.b.c.s.AbstractStep [main] Step: [jdbcPaginStep] executed in 28ms
+2022-05-19 16:53:56,524 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcPaginJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=2}] and the following status: [COMPLETED] in 47ms
+2022-05-19 16:53:56,572 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=17}]
+2022-05-19 16:53:56,594 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-19 16:53:56,613 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 19ms
+2022-05-19 16:53:56,627 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=17}] and the following status: [COMPLETED] in 49ms
+2022-05-19 16:53:56,660 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=17}]
+2022-05-19 16:53:56,672 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-19 16:53:56,690 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 18ms
+2022-05-19 16:53:56,706 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=17}] and the following status: [COMPLETED] in 40ms
+2022-05-19 16:53:56,749 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=skipJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=1}]
+2022-05-19 16:53:56,775 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [skipStep]
+2022-05-19 16:53:56,909 ERROR o.s.b.c.s.AbstractStep [main] Encountered an error executing step skipStep in job skipJob
+org.springframework.jdbc.UncategorizedSQLException: Attempt to process next row failed; uncategorized SQLException for SQL [select * from client]; SQL state [null]; error code [0]; Encerrando a execução - Cliente inválido joao@test.com; nested exception is java.sql.SQLException: Encerrando a execução - Cliente inválido joao@test.com
+	at org.springframework.batch.item.database.AbstractCursorItemReader.translateSqlException(AbstractCursorItemReader.java:230) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.database.AbstractCursorItemReader.doRead(AbstractCursorItemReader.java:510) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.read(AbstractItemCountingItemStreamItemReader.java:93) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.doRead(SimpleChunkProvider.java:99) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.read(SimpleChunkProvider.java:180) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider$1.doInIteration(SimpleChunkProvider.java:126) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.provide(SimpleChunkProvider.java:118) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:71) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128) ~[spring-batch-core-4.3.5.jar:4.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.19.jar:5.3.19]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.19.jar:5.3.19]
+	at com.sun.proxy.$Proxy67.run(Unknown Source) ~[?:?]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150) ~[spring-boot-autoconfigure-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:758) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) ~[spring-boot-2.6.7.jar:2.6.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.7.jar:2.6.7]
+	at com.richard.batch.BatchExampleApplication.main(BatchExampleApplication.java:12) ~[classes/:?]
+Caused by: java.sql.SQLException: Encerrando a execução - Cliente inválido joao@test.com
+	at com.richard.batch.infrastructure.batch.skip.SkipExceptionReaderConfig$1.mapRow(SkipExceptionReaderConfig.java:34) ~[classes/:?]
+	at com.richard.batch.infrastructure.batch.skip.SkipExceptionReaderConfig$1.mapRow(SkipExceptionReaderConfig.java:29) ~[classes/:?]
+	at org.springframework.batch.item.database.JdbcCursorItemReader.readCursor(JdbcCursorItemReader.java:142) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	at org.springframework.batch.item.database.AbstractCursorItemReader.doRead(AbstractCursorItemReader.java:505) ~[spring-batch-infrastructure-4.3.5.jar:4.3.5]
+	... 48 more
+2022-05-19 16:53:56,922 INFO o.s.b.c.s.AbstractStep [main] Step: [skipStep] executed in 147ms
+2022-05-19 16:53:56,933 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=skipJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=1}] and the following status: [FAILED] in 180ms
+2022-05-19 16:53:56,937 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-19 16:53:56,943 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-19 16:53:56,943 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
+2022-05-19 16:53:56,949 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.
+2022-05-19 16:55:44,818 INFO c.r.b.BatchExampleApplication [main] Starting BatchExampleApplication using Java 11.0.14 on mac-pro.local with PID 12584 (/Users/richard/dev/git/spring-projects/batch-example/target/classes started by richard in /Users/richard/dev/git/spring-projects/batch-example)
+2022-05-19 16:55:44,822 INFO c.r.b.BatchExampleApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-05-19 16:55:45,541 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2022-05-19 16:55:45,857 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-05-19 16:55:46,028 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-05-19 16:55:46,101 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
+2022-05-19 16:55:46,132 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
+2022-05-19 16:55:46,243 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: POSTGRES
+2022-05-19 16:55:46,373 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-19 16:55:46,465 INFO c.r.b.BatchExampleApplication [main] Started BatchExampleApplication in 2.102 seconds (JVM running for 3.046)
+2022-05-19 16:55:46,597 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}]
+2022-05-19 16:55:46,639 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fileFormatMultipleStep]
+2022-05-19 16:55:46,785 INFO o.s.b.c.s.AbstractStep [main] Step: [fileFormatMultipleStep] executed in 146ms
+2022-05-19 16:55:46,802 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fileFormatMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=11}] and the following status: [COMPLETED] in 178ms
+2022-05-19 16:55:46,891 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}]
+2022-05-19 16:55:46,936 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileDelimitedStep]
+2022-05-19 16:55:46,967 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileDelimitedStep] executed in 31ms
+2022-05-19 16:55:46,981 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileDelimitedJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}] and the following status: [COMPLETED] in 83ms
+2022-05-19 16:55:47,021 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}]
+2022-05-19 16:55:47,037 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileFlatStep]
+2022-05-19 16:55:47,058 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileFlatStep] executed in 21ms
+2022-05-19 16:55:47,070 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileFlatJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}] and the following status: [COMPLETED] in 43ms
+2022-05-19 16:55:47,115 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}]
+2022-05-19 16:55:47,147 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [fixedWidthFileMultipleStep]
+2022-05-19 16:55:47,227 INFO o.s.b.c.s.AbstractStep [main] Step: [fixedWidthFileMultipleStep] executed in 80ms
+2022-05-19 16:55:47,243 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=fixedWidthFileMultipleJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=19}] and the following status: [COMPLETED] in 121ms
+2022-05-19 16:55:47,286 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=4}]
+2022-05-19 16:55:47,304 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [jdbcCursorStep]
+2022-05-19 16:55:47,492 INFO o.s.b.c.s.AbstractStep [main] Step: [jdbcCursorStep] executed in 188ms
+2022-05-19 16:55:47,505 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcCursorJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=4}] and the following status: [COMPLETED] in 214ms
+2022-05-19 16:55:47,551 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcPaginJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=3}]
+2022-05-19 16:55:47,572 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [jdbcPaginStep]
+2022-05-19 16:55:47,625 INFO o.s.b.c.s.AbstractStep [main] Step: [jdbcPaginStep] executed in 53ms
+2022-05-19 16:55:47,643 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=jdbcPaginJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=3}] and the following status: [COMPLETED] in 83ms
+2022-05-19 16:55:47,687 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}]
+2022-05-19 16:55:47,702 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printHelloStep]
+2022-05-19 16:55:47,716 INFO o.s.b.c.s.AbstractStep [main] Step: [printHelloStep] executed in 14ms
+2022-05-19 16:55:47,727 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printHelloJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}] and the following status: [COMPLETED] in 35ms
+2022-05-19 16:55:47,760 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}]
+2022-05-19 16:55:47,784 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [printOddNumber]
+2022-05-19 16:55:47,833 INFO o.s.b.c.s.AbstractStep [main] Step: [printOddNumber] executed in 49ms
+2022-05-19 16:55:47,861 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=printOddNumberJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=18}] and the following status: [COMPLETED] in 90ms
+2022-05-19 16:55:47,924 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=skipJob]] launched with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=2}]
+2022-05-19 16:55:47,942 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [skipStep]
+2022-05-19 16:55:48,064 INFO o.s.b.c.s.AbstractStep [main] Step: [skipStep] executed in 121ms
+2022-05-19 16:55:48,084 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=skipJob]] completed with the following parameters: [{fileClientsFlat=file:files/clients-flat.txt, fileClientsDelimit=file:files/clients-delimited.txt, fileClientsFileMultiple=file:files/clients-multiple.txt, fileClients=file:files/clients_*, run.id=2}] and the following status: [COMPLETED] in 152ms
+2022-05-19 16:55:48,090 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-05-19 16:55:48,098 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-05-19 16:55:48,100 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
+2022-05-19 16:55:48,107 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.

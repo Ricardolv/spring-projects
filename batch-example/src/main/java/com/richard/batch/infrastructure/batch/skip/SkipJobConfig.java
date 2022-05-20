@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.files.jobs;
+package com.richard.batch.infrastructure.batch.skip;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -10,15 +10,14 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class JdbcCursorJobConfig {
+public class SkipJobConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
 
     @Bean
-    public Job jdbcCursorJob(Step jdbcCursorStep) {
-        return jobBuilderFactory
-                .get("jdbcCursorJob")
-                .start(jdbcCursorStep)
+    public Job skipJob(Step skipStep) {
+        return jobBuilderFactory.get("skipJob")
+                .start(skipStep)
                 .incrementer(new RunIdIncrementer())
                 .build();
     }

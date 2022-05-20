@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.files.writers;
+package com.richard.batch.infrastructure.batch.skip;
 
 import com.richard.batch.domain.Client;
 import org.springframework.batch.item.ItemWriter;
@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class JdbcPaginWriterConfig {
+public class SkipExceptionWriterConfig {
 
     @Bean
-    public ItemWriter<Client> jdbcPaginWriter() {
-        return clientes -> clientes.forEach(System.out::println);
+    public ItemWriter<Client> skipExceptionWriter() {
+        return clients -> clients.forEach(System.out::println);
     }
 
 }

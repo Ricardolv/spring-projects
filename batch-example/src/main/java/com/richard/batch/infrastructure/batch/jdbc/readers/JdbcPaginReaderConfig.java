@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.files.readers;
+package com.richard.batch.infrastructure.batch.jdbc.readers;
 
 import com.richard.batch.domain.Client;
 import org.springframework.batch.item.database.JdbcPagingItemReader;

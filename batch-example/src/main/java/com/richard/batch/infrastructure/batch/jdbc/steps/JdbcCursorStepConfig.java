@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.files.steps;
+package com.richard.batch.infrastructure.batch.jdbc.steps;
 
 import com.richard.batch.domain.Client;
 import lombok.RequiredArgsConstructor;
@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class JdbcPaginStepConfig {
+public class JdbcCursorStepConfig {
 
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Step jdbcPaginStep(ItemReader<Client> jdbcPaginReader, ItemWriter<Client> jdbcPaginWriter) {
+    public Step jdbcCursorStep(ItemReader<Client> jdbcCursorReader, ItemWriter<Client> jdbcCursorWriter) {
         return stepBuilderFactory
-                .get("jdbcPaginStep")
+                .get("jdbcCursorStep")
                 .<Client, Client>chunk(1)
-                .reader(jdbcPaginReader)
-                .writer(jdbcPaginWriter)
+                .reader(jdbcCursorReader)
+                .writer(jdbcCursorWriter)
                 .build();
     }
 
