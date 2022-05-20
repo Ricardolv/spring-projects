@@ -1,9 +1,11 @@
-package com.richard.batch.infrastructure.batch.processors.validation.processor;
+package com.richard.batch.infrastructure.batch.processors.compound.processor;
 
 import com.richard.batch.domain.ClientProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.support.builder.CompositeItemProcessorBuilder;
 import org.springframework.batch.item.validator.BeanValidatingItemProcessor;
+import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
 import org.springframework.context.annotation.Bean;
@@ -14,19 +16,27 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @Configuration
-public class ValidationProcessor {
+public class CompositeProcessor {
     private Set<String> emails = new HashSet<>();
 
     @Bean
-    public ItemProcessor<ClientProcessor, ClientProcessor> itemValidationProcessor() {
-//        return client -> client;
+    public ItemProcessor<ClientProcessor, ClientProcessor> itemCompositeProcessor() throws Exception {
+        return new CompositeItemProcessorBuilder<ClientProcessor, ClientProcessor>()
+                .delegates(beanValidatingItemProcessor(), emailValidatingItemProcessor())
+                .build();
+    }
 
+    private BeanValidatingItemProcessor<ClientProcessor> beanValidatingItemProcessor() throws Exception {
         BeanValidatingItemProcessor<ClientProcessor> processor = new BeanValidatingItemProcessor<>();
         processor.setFilter(true);
+        processor.afterPropertiesSet();
+        return processor;
+    }
 
-//        ValidatingItemProcessor<ClientProcessor> processor = new BeanValidatingItemProcessor<>();
-//        processor.setValidator(validator());
-//        processor.setFilter(true);
+    private ValidatingItemProcessor<ClientProcessor> emailValidatingItemProcessor() {
+        ValidatingItemProcessor<ClientProcessor> processor = new BeanValidatingItemProcessor<>();
+        processor.setValidator(validator());
+        processor.setFilter(true);
         return processor;
     }
 

@@ -1,4 +1,4 @@
-package com.richard.batch.infrastructure.batch.processors.validation.reader;
+package com.richard.batch.infrastructure.batch.processors.compound.reader;
 
 import com.richard.batch.domain.ClientProcessor;
 import lombok.RequiredArgsConstructor;
@@ -12,14 +12,14 @@ import org.springframework.core.io.Resource;
 
 @RequiredArgsConstructor
 @Configuration
-public class ValidationProcessorReader {
+public class CompositeProcessorReader {
 
     @StepScope
     @Bean
-    public FlatFileItemReader<ClientProcessor> itemValidationProcessorReader(
+    public FlatFileItemReader<ClientProcessor> itemCompositeProcessorReader(
             @Value("#{jobParameters['fileClientsValidation']}") Resource fileClientsValidation) {
         return new FlatFileItemReaderBuilder<ClientProcessor>()
-                .name("itemValidationProcessorReader")
+                .name("itemCompositeProcessorReader")
                 .resource(fileClientsValidation)
                 .delimited()
                 .names("name", "age", "email")
