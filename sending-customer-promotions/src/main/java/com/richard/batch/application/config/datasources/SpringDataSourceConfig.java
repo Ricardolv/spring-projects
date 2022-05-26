@@ -1,4 +1,4 @@
-package com.richard.batch.datasources;
+package com.richard.batch.application.config.datasources;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
