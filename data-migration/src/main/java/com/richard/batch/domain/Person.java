@@ -9,6 +9,9 @@ import lombok.ToString;
 
 import java.util.Date;
 
+import static java.util.Objects.nonNull;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -23,4 +26,7 @@ public class Person {
     private Date birthDate;
     private int age;
 
+    public boolean isValid() {
+        return isNotBlank(name) && isNotBlank(email) && nonNull(birthDate);
+    }
 }

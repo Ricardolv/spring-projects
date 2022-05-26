@@ -12,10 +12,10 @@ import javax.sql.DataSource;
 import java.sql.Date;
 
 @Configuration
-public class PersonWriterConfig {
+public class PersonMigrationWriterConfig {
 
     @Bean
-    public JdbcBatchItemWriter<Person> personWriter(@Qualifier("appdatabase") DataSource dataSource) {
+    public JdbcBatchItemWriter<Person> personMigrationWriter(@Qualifier("appdatabase") DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Person>()
                 .dataSource(dataSource)
                 .sql("INSERT INTO pessoa (id, nome, email, data_nascimento, idade) VALUES (?, ?, ?, ?, ?)")

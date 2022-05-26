@@ -5,7 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.file.FlatFileItemWriter;
+import org.springframework.batch.item.support.ClassifierCompositeItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,12 +18,14 @@ public class PersonMigrationStepConfig {
 
     @Bean
     public Step personMigrationStep(ItemReader<Person> filePersonReader,
-                                    ItemWriter<Person> personWriter) {
+                                    ClassifierCompositeItemWriter<Person> personClassifierWriter,
+                                    FlatFileItemWriter<Person> filePersonMigrationInvalidWriter) {
         return stepBuilderFactory
                 .get("personMigrationStep")
                 .<Person, Person>chunk(1)
                 .reader(filePersonReader)
-                .writer(personWriter)
+                .writer(personClassifierWriter)
+                .stream(filePersonMigrationInvalidWriter)
                 .build();
     }
 

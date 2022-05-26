@@ -20,5 +20,5 @@ public class BankDataWriterConfig {
                 .beanMapped()
                 .build();
     }
-    
+
 }
