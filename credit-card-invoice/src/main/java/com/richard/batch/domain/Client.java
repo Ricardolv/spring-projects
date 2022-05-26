@@ -1,5 +1,6 @@
 package com.richard.batch.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +17,10 @@ import lombok.ToString;
 public class Client {
 
     private int id;
+
+    @JsonProperty(value = "nome")
     private String name;
+
+    @JsonProperty(value = "endereco")
     private String address;
 }

@@ -14,13 +14,12 @@ public class SystemClient {
 
     public Client getClient(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Client> response = restTemplate.getForEntity(URI, Client.class);
+        ResponseEntity<Client> response = restTemplate.getForEntity(String.format(URI, id), Client.class);
 
         if (response.getStatusCode() != HttpStatus.OK)
             throw new ValidationException("Cliente não encontrado!");
 
         return response.getBody();
     }
-
 
 }

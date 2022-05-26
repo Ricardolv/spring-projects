@@ -21,4 +21,11 @@ public class InvoiceCreditCard {
     private Client client;
     private CreditCard creditCard;
     private List<Transaction> transactions = new ArrayList<>();
+
+    public Double getTotal() {
+        return transactions
+                .stream()
+                .mapToDouble(Transaction::getValue)
+                .reduce(0.0, Double::sum);
+    }
 }
