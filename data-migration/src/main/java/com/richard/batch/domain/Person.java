@@ -18,9 +18,9 @@ import java.util.Date;
 public class Person {
 
     private int id;
-    private String nome;
+    private String name;
     private String email;
-    private Date dataNascimento;
-    private int idade;
+    private Date birthDate;
+    private int age;
 
 }

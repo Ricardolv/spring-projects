@@ -16,8 +16,8 @@ import lombok.ToString;
 public class BankData {
 
     private int id;
-    private int pessoaId;
-    private int agencia;
-    private int conta;
-    private int banco;
+    private int personId;
+    private int agency;
+    private int account;
+    private int bank;
 }
