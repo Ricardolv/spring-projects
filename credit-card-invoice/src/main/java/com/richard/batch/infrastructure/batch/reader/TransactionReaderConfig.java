@@ -18,7 +18,7 @@ public class TransactionReaderConfig {
     @Bean
     public JdbcCursorItemReader<Transaction> readTransactionReader(
             @Qualifier("appdatabase") DataSource dataSource) {
-        return new JdbcCursorItemReaderBuilder<>()
+        return new JdbcCursorItemReaderBuilder<Transaction>()
                 .name("readTransactionReader")
                 .dataSource(dataSource)
                 .sql("select * from transacao join cartao_credito using(numero_cartao_credito) order by numero_cartao_credito")
