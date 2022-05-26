@@ -22,7 +22,7 @@ public class PersonMigrationStepConfig {
                                     FlatFileItemWriter<Person> filePersonMigrationInvalidWriter) {
         return stepBuilderFactory
                 .get("personMigrationStep")
-                .<Person, Person>chunk(1)
+                .<Person, Person>chunk(10000)
                 .reader(filePersonReader)
                 .writer(personClassifierWriter)
                 .stream(filePersonMigrationInvalidWriter)

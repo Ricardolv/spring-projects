@@ -20,7 +20,7 @@ public class BankDataMigrationStepConfig {
                                       ItemWriter<BankData> bankDataWriter) {
         return stepBuilderFactory
                 .get("bankDataMigrationStep")
-                .<BankData, BankData>chunk(1)
+                .<BankData, BankData>chunk(10000)
                 .reader(fileBankDataReader)
                 .writer(bankDataWriter)
                 .build();
