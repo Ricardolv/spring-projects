@@ -19,7 +19,7 @@ public class SendCustomerPromotionsProcessor implements ItemProcessor<InterestPr
         email.setText(genareteText(interestProductCustomer));
         return email;
     }
-    
+
     private String genareteText(InterestProductCustomer interestProductCustomer) {
         StringBuilder writer = new StringBuilder();
         writer.append(String.format("Olá, %s˜\n\n", interestProductCustomer.getClient().getName()));
