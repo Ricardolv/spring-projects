@@ -17,6 +17,7 @@ public class SendCustomerPromotionsProcessor implements ItemProcessor<InterestPr
         email.setTo(interestProductCustomer.getClient().getEmail());
         email.setSubject("Promoção Imperdivel!!!");
         email.setText(genareteText(interestProductCustomer));
+        Thread.sleep(2000);
         return email;
     }
 
