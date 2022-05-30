@@ -61,7 +61,7 @@ public class UserReader implements ItemReader<User> {
         for (int i = 0; i < chunkSize; i+= pageSize) {
             if (total >= limit) return;
             users.addAll(fetchUserDataFromApi());
-            total += users.size();
+            total += pageSize;
             page++;
         }
     }
